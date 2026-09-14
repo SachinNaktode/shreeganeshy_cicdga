@@ -1,4 +1,4 @@
 variable "pip" {
-    type = map(any)
-  
+  type = map(any)
+
 }

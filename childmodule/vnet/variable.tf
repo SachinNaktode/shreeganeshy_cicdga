@@ -1,4 +1,4 @@
 variable "vnet" {
-    type = map(any)
-  
+  type = map(any)
+
 }

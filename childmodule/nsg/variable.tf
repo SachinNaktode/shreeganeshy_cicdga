@@ -1,4 +1,4 @@
 variable "nsg" {
-    type = map(any)
-  
+  type = map(any)
+
 }
