@@ -18,10 +18,22 @@ module "subnet" {
 }
 
 module "nsg" {
-  depends_on = [module.rg]
-  source     = "../../childmodule/nsg"
-  nsg        = var.nsg
 
+  depends_on = [
+    module.rg,
+    module.subnet
+  ]
+
+  source = "../../childmodule/nsg"
+
+  nsg = {
+    for key, value in var.nsg : key => merge(
+      value,
+      {
+        subnet_id = module.subnet.subnet_id[key]
+      }
+    )
+  }
 }
 
 module "pip" {
